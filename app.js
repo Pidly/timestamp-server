@@ -13,6 +13,8 @@ app.use(
 
 const PORT = process.env.PORT || 3000;
 
+const returnDate = new Date(1995, 11, 17);
+
 // view engine setup
 //app.set('views', path.join(__dirname, 'views'));
 //app.set('view engine', 'jade');
@@ -21,9 +23,11 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json());
 
 app.get("/home", (req, res) => {
+  var unixTime = returnDate.getTime() / 1000;
+  var dateStr = returnDate
   res.json({
-    unix: 123456789,
-    date: "10/12/22"
+    unix: unixTime,
+    date: returnDate.toJSON()
   })
 });
 
