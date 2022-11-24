@@ -1,10 +1,16 @@
 var express = require('express');
 const bodyParser = require("body-parser");
-
+const cors = require("cors");
 //var indexRouter = require('./routes/index');
 //var usersRouter = require('./routes/users');
 
 var app = express();
+app.use(
+  cors({
+    origin: "https://timestamp-client-app-production.up.railway.app"
+  })
+)
+
 const PORT = process.env.PORT || 3000;
 
 // view engine setup
