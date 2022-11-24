@@ -9,6 +9,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+const PORT = process.env.PORT || 3000;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -25,7 +26,7 @@ app.get("/home", (req, res) => {
   })
 });
 
-app.listen(3723, () => console.log("Server is up"));
+app.listen(PORT, () => console.log("Server is up"));
 
 /*
 app.use(express.json());
