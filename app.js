@@ -25,7 +25,7 @@ app.get("/home", (req, res) => {
   })
 });
 
-app.listen(3001, () => console.log("Server is up"));
+app.listen(3723, () => console.log("Server is up"));
 
 /*
 app.use(express.json());
