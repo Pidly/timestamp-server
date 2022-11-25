@@ -3,17 +3,20 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 //var indexRouter = require('./routes/index');
 //var usersRouter = require('./routes/users');
+const localUrl = "http://localhost:3000";
+const serverUrl = "https://timestamp-client-app-production.up.railway.app";
 
 var app = express();
 app.use(
   cors({
-    origin: "https://timestamp-client-app-production.up.railway.app"
+    origin: localUrl
   })
 )
 
 const PORT = process.env.PORT || 3000;
-
-const returnDate = new Date(1995, 11, 17);
+//2015-12-25
+const returnDate = new Date(2015, 12, 25);
+const epochDate = new Date(1453708800000);
 
 // view engine setup
 //app.set('views', path.join(__dirname, 'views'));
@@ -24,10 +27,19 @@ app.use(bodyParser.json());
 
 app.get("/home", (req, res) => {
   var unixTime = returnDate.getTime() / 1000;
-  var dateStr = returnDate
+  var dateStr = returnDate;
   res.json({
     unix: unixTime,
     date: returnDate.toJSON()
+  })
+});
+
+app.get("/epoch", (req, res) => {
+  var unixTime = epochDate.getTime() / 1000;
+
+  res.json({
+    unix: unixTime,
+    date: epochDate.toJSON()
   })
 });
 
