@@ -6,14 +6,17 @@ const cors = require("cors");
 const localUrl = "http://localhost:3000";
 const serverUrl = "https://timestamp-client-app-production.up.railway.app";
 
+const CORS_URL = process.env.CORS_URL || "http://localhost:3000";
+
 var app = express();
 app.use(
   cors({
-    origin: localUrl
+    origin: CORS_URL
   })
 )
 
 const PORT = process.env.PORT || 3000;
+
 //2015-12-25
 const returnDate = new Date(2015, 12, 25);
 const epochDate = new Date(1453708800000);
